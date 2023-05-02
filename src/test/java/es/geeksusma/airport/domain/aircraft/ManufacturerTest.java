@@ -2,11 +2,10 @@ package es.geeksusma.airport.domain.aircraft;
 
 import org.junit.jupiter.api.Test;
 
+import static es.geeksusma.airport.data.ManufacturerMotherObject.MANUFACTURER_BOEING;
 import static org.assertj.core.api.Assertions.*;
 
 class ManufacturerTest {
-
-    public static final String MANUFACTURER_BOEING = "BOEING";
 
     @Test
     void should_createManufacturerWithCode_when_of() {
