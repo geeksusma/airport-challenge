@@ -8,7 +8,11 @@ public class Model {
         this.code = code;
     }
 
-    public static Model of(String code) {
+    static Model of(String code) {
         return new Model(code);
+    }
+
+    String info() {
+        return "Model is: " + code;
     }
 }

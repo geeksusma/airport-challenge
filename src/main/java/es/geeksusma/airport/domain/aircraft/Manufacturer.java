@@ -8,7 +8,11 @@ public class Manufacturer {
         this.code = code;
     }
 
-    public static Manufacturer of(String code) {
+    static Manufacturer of(String code) {
         return new Manufacturer(code);
+    }
+
+    String info() {
+        return "Manufactured by: " + code;
     }
 }

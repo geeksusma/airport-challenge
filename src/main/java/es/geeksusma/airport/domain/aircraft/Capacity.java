@@ -19,4 +19,14 @@ public class Capacity {
         }
         return new Capacity(crew, passengers);
     }
+
+    public Integer minCrew() {
+
+        return this.crew;
+    }
+
+    public Integer minPassengers() {
+
+        return this.passengers;
+    }
 }
