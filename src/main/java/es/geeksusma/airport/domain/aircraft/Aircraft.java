@@ -23,6 +23,14 @@ public class Aircraft {
         return capacity.minPassengers();
     }
 
+    public Integer maxCabinCrewSeats() {
+        return capacity.maxCrew();
+    }
+
+    public Integer maxPassengerSeats() {
+        return capacity.maxPassengers();
+    }
+
     public static class AircraftBuilder {
         private Manufacturer manufacturer = Manufacturer.empty();
         private Model model = Model.empty();
@@ -42,8 +50,8 @@ public class Aircraft {
             return this;
         }
 
-        public AircraftBuilder withCapacity(Integer crew, Integer passengers) {
-            this.capacity = Capacity.of(crew, passengers);
+        public AircraftBuilder withCapacity(Integer minCrew, Integer maxCrew, Integer minPassengers, Integer maxPassengers) {
+            this.capacity = Capacity.of(minCrew, maxCrew, minPassengers, maxPassengers);
             return this;
         }
 

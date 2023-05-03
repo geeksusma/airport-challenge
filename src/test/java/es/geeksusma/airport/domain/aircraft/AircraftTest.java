@@ -16,13 +16,15 @@ class AircraftTest {
                 AircraftBuilder.builder()
                         .withManufacturer(ManufacturerMotherObject.MANUFACTURER_BOEING)
                         .withModel(ManufacturerMotherObject.BOEING_747_MODEL)
-                        .withCapacity(4, 20)
+                        .withCapacity(ManufacturerMotherObject.MIN_CREW_FOR_747, ManufacturerMotherObject.MAX_CREW_FOR_747, ManufacturerMotherObject.MIN_PASSENGERS_FOR_747, ManufacturerMotherObject.MAX_PASSENGERS_FOR_747)
                         .build()
         ).isNotNull()
                 .satisfies(aircraft -> {
                     assertThat(aircraft.info()).isEqualTo("Manufactured by: " + ManufacturerMotherObject.MANUFACTURER_BOEING + " Model is: " + ManufacturerMotherObject.BOEING_747_MODEL);
-                    assertThat(aircraft.minCabinCrewSeats()).isEqualTo(4);
-                    assertThat(aircraft.minPassengerSeats()).isEqualTo(20);
+                    assertThat(aircraft.minCabinCrewSeats()).isEqualTo(ManufacturerMotherObject.MIN_CREW_FOR_747);
+                    assertThat(aircraft.minPassengerSeats()).isEqualTo(ManufacturerMotherObject.MIN_PASSENGERS_FOR_747);
+                    assertThat(aircraft.maxCabinCrewSeats()).isEqualTo(ManufacturerMotherObject.MAX_CREW_FOR_747);
+                    assertThat(aircraft.maxPassengerSeats()).isEqualTo(ManufacturerMotherObject.MAX_PASSENGERS_FOR_747);
                 });
     }
 

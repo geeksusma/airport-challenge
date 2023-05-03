@@ -4,26 +4,20 @@ import java.util.Objects;
 
 public class Capacity {
 
-    private final Integer crew;
-    private final Integer passengers;
+    private final Seats crew;
+    private final Seats passengers;
 
-    private Capacity(Integer crew, Integer passengers) {
+    private Capacity(Seats crew, Seats passengers) {
         this.crew = crew;
         this.passengers = passengers;
     }
 
-    public static Capacity of(Integer crew, Integer passengers) {
-        if (crew < 4) {
-            throw new IllegalCabinCrew("Not enough crew to drive a flight");
-        }
-        if (passengers < 20) {
-            throw new NotEnoughPassengers("Not enough people aboard to proceed with a flight");
-        }
-        return new Capacity(crew, passengers);
+    public static Capacity of(Integer minCrew, Integer maxCrew, Integer minPassengers, Integer maxPassengers) {
+        return new Capacity(Seats.of(maxCrew, minCrew), Seats.of(maxPassengers, minPassengers));
     }
 
     static Capacity empty() {
-        return new Capacity(0, 0);
+        return new Capacity(Seats.empty(), Seats.empty());
     }
 
     @Override
@@ -41,11 +35,21 @@ public class Capacity {
 
     public Integer minCrew() {
 
-        return this.crew;
+        return this.crew.min();
     }
 
     public Integer minPassengers() {
 
-        return this.passengers;
+        return this.passengers.min();
+    }
+
+    public Integer maxCrew() {
+
+        return this.crew.max();
+    }
+
+    public Integer maxPassengers() {
+
+        return this.passengers.max();
     }
 }
