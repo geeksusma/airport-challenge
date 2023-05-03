@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static es.geeksusma.airport.domain.aircraft.Aircraft.AircraftBuilder;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 
 class AircraftTest {
 
@@ -23,5 +24,31 @@ class AircraftTest {
                     assertThat(aircraft.minCabinCrewSeats()).isEqualTo(4);
                     assertThat(aircraft.minPassengerSeats()).isEqualTo(20);
                 });
+    }
+
+    @Test
+    void should_throwNoManufacturer_when_build() {
+        assertThat(catchThrowable(() ->
+                AircraftBuilder.builder().build())
+        ).isInstanceOf(NoManufacturer.class);
+    }
+
+    @Test
+    void should_throwNoModel_when_build() {
+        assertThat(catchThrowable(() ->
+                AircraftBuilder.builder()
+                        .withManufacturer(ManufacturerMotherObject.MANUFACTURER_BOEING)
+                        .build())
+        ).isInstanceOf(NoModel.class);
+    }
+
+    @Test
+    void should_throwNoCapacity_when_build() {
+        assertThat(catchThrowable(() ->
+                AircraftBuilder.builder()
+                        .withManufacturer(ManufacturerMotherObject.MANUFACTURER_BOEING)
+                        .withModel(ManufacturerMotherObject.BOEING_747_MODEL)
+                        .build())
+        ).isInstanceOf(NoCapacity.class);
     }
 }

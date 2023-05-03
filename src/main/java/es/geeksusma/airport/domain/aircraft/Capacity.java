@@ -1,5 +1,7 @@
 package es.geeksusma.airport.domain.aircraft;
 
+import java.util.Objects;
+
 public class Capacity {
 
     private final Integer crew;
@@ -18,6 +20,23 @@ public class Capacity {
             throw new NotEnoughPassengers("Not enough people aboard to proceed with a flight");
         }
         return new Capacity(crew, passengers);
+    }
+
+    static Capacity empty() {
+        return new Capacity(0, 0);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Capacity capacity = (Capacity) o;
+        return Objects.equals(crew, capacity.crew) && Objects.equals(passengers, capacity.passengers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(crew, passengers);
     }
 
     public Integer minCrew() {

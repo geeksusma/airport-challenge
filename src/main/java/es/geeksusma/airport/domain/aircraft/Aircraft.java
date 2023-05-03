@@ -24,9 +24,9 @@ public class Aircraft {
     }
 
     public static class AircraftBuilder {
-        private Manufacturer manufacturer;
-        private Model model;
-        private Capacity capacity;
+        private Manufacturer manufacturer = Manufacturer.empty();
+        private Model model = Model.empty();
+        private Capacity capacity = Capacity.empty();
 
         public static AircraftBuilder builder() {
             return new AircraftBuilder();
@@ -48,6 +48,15 @@ public class Aircraft {
         }
 
         public Aircraft build() {
+            if (Manufacturer.empty().equals(this.manufacturer)) {
+                throw new NoManufacturer();
+            }
+            if (Model.empty().equals(this.model)) {
+                throw new NoModel();
+            }
+            if (Capacity.empty().equals(this.capacity)) {
+                throw new NoCapacity();
+            }
             return new Aircraft(this.manufacturer, this.model, this.capacity);
         }
     }
