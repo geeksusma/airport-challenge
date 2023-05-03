@@ -63,9 +63,21 @@ Once the flight is 15 minutes before the departure time, the gate will get close
 
 ### First iteration.
 
+#### Design the model
+
+Design the model to represent all the elements listed before, and taking into account the basic domain rules needed.
+
+To keep this exercise small, don't implement any validation not listed along the exercise.
+
+Estimated time to design the model is 5 hours.
+
+### Second iteration.
+
 #### Setup trips
 
 We want to design a component that will allow to define in the system a trip, including their stages (if the trip is a long one) and please verifying those stages are fulfilling the validations listed above
+
+### Third iteration.
 
 #### Onboarding process
 
