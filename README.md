@@ -15,7 +15,9 @@ To make this problem small, we’re not going to save more info than requested, 
 
 ### Aircrafts, Routes, Cabin Crew and Passengers:
 
-We have data about the aircrafts, like the manufacturer (Boeing... Airbus...) the model (747...) and their capacity (passengers and cabin crew) in number of seats
+We have data about the aircrafts, like the manufacturer (Boeing... Airbus...) the model (747...) and their capacity (passengers and cabin crew) in number of seats.
+
+For the capacity, we're interested in knowing, the minimum of people needed to drive the flight, and the minimum of passengers needed to avoid a cancellation. Also We need to know the maximum capacity for both, to avoid an overbooking.
 
 The aircrafts are set in routes around the world, for the routes we’re saving the departure and the target airports, also the estimated time to arrival is important, and at what time is scheduled the departure.
 
